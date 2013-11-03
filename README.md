@@ -10,6 +10,8 @@ Commands
 
 `/set <user> <amount>` to set the amount of money desired to the user (Only used by Administrators)
 
+`/take <user> <amount>` to take the desired amount of money from a player. (Only used by Administrators)
+
 Configuration
 ------
 
