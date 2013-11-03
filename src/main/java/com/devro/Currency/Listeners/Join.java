@@ -29,7 +29,7 @@ public class Join implements Listener {
         Player player = event.getPlayer();
         this.plugin.fileUtil.createFile(player);
         int currentMoney = this.plugin.fileUtil.getMoney(player.getName()).intValue();
-        this.plugin.messageUtils .sendMessageFromModule(player, "Currency+", "Your current budget is: " + currentMoney);
+        this.plugin.messageUtils .sendMessageFromModule(player, "Currency+", "Your current budget is: " + currentMoney + " " +this.plugin.getConfig().getString("Currency-Name"));
     }
 
     //**************************//

@@ -36,7 +36,7 @@ public class Pay implements CommandExecutor {
                     int moneyPaid= Integer.parseInt(args[1]);
                     this.plugin.fileUtil.addMoney(name, moneyPaid);
                     this.plugin.fileUtil.takeMoney(player.getName(), moneyPaid);
-                    this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have sent " + moneyPaid + " to " + name);
+                    this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have sent " + moneyPaid + this.plugin.getConfig().getString("Currency-Name") + " to " + name);
                 }
             }
         }
