@@ -2,6 +2,7 @@ package com.devro.Currency;
 
 import com.devro.Currency.Commands.Pay;
 import com.devro.Currency.Commands.SetCommand;
+import com.devro.Currency.Commands.TakeCommand;
 import com.devro.Currency.Listeners.Join;
 import com.devro.Currency.Utils.FileUtil;
 import com.devro.Currency.Utils.MessageUtils;
@@ -34,6 +35,7 @@ public class Currency extends JavaPlugin {
     public void registerCommands() {
      getCommand("pay").setExecutor(new Pay(this));
      getCommand("set").setExecutor(new SetCommand(this));
+     getCommand("take").setExecutor(new TakeCommand(this));
     }
 
     //**************************//

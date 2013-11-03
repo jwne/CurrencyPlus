@@ -7,3 +7,5 @@ commands:
   description: Allows users to pay money to others.
  set:
   description: Sets the amount of money to other players.
+ take:
+  description: Takes the amount of money from a player.
