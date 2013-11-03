@@ -38,7 +38,7 @@ public class SetCommand implements CommandExecutor {
                 String name = this.plugin.fileUtil.getPlayerName(args[0]);
                 int moneySet = Integer.parseInt(args[1]);
                 this.plugin.fileUtil.setMoney(name, moneySet);
-                this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have set the money of " + name + " to " + moneySet);
+                this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have set the money of " + name + " to " + moneySet + " " +  this.plugin.getConfig().getString("Currency-Name"));
             }
         }
         return true;

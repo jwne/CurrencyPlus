@@ -31,12 +31,16 @@ public class Pay implements CommandExecutor {
                     if (args.length == 0 || args.length > 2) {
                         this.plugin.messageUtils.sendMessageFromModule(player, "Error", "To many arguments");
                     }
-
-                    String name = this.plugin.fileUtil.getPlayerName(args[0]);
-                    int moneyPaid= Integer.parseInt(args[1]);
-                    this.plugin.fileUtil.addMoney(name, moneyPaid);
-                    this.plugin.fileUtil.takeMoney(player.getName(), moneyPaid);
-                    this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have sent " + moneyPaid + this.plugin.getConfig().getString("Currency-Name") + " to " + name);
+                    if (args.length == 2) {
+                        String name = this.plugin.fileUtil.getPlayerName(args[0]);
+                        if (name.equals(player.getName())) {
+                            this.plugin.messageUtils.sendMessageFromModule(player, "Error", "Trying to send money to yourself?");
+                        }
+                        int moneyPaid= Integer.parseInt(args[1]);
+                        this.plugin.fileUtil.addMoney(name, moneyPaid);
+                        this.plugin.fileUtil.takeMoney(player.getName(), moneyPaid);
+                        this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have sent " + moneyPaid + this.plugin.getConfig().getString("Currency-Name") + " to " + name);
+                    }
                 }
             }
         }
