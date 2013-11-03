@@ -1,6 +1,8 @@
 package com.devro.Currency.Commands;
 
+import com.devro.Currency.API.CurrencyPlusAPI;
 import com.devro.Currency.Currency;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -40,7 +42,7 @@ public class Pay implements CommandExecutor {
                             this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have sent " + moneyPaid + " " +  this.plugin.getConfig().getString("Currency-Name") + " to " + name);
                         }
 
-                        if (this.plugin.isInteger(args[1])) {
+                        if (CurrencyPlusAPI.isInteger(args[1])) {
                             int moneyPaid= Integer.parseInt(args[1]);
                             this.plugin.fileUtil.addMoney(name, moneyPaid);
                             this.plugin.fileUtil.takeMoney(player.getName(), moneyPaid);

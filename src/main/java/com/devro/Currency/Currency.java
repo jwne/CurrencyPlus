@@ -1,5 +1,6 @@
 package com.devro.Currency;
 
+import com.devro.Currency.API.CurrencyPlusAPI;
 import com.devro.Currency.Commands.Pay;
 import com.devro.Currency.Commands.SetCommand;
 import com.devro.Currency.Commands.TakeCommand;
@@ -49,13 +50,5 @@ public class Currency extends JavaPlugin {
 
     //**************************//
 
-    public boolean isInteger(String string) {
-        try {
-           Integer.parseInt(string);
-           return true;
-        }   catch (NumberFormatException nfe) {
-           return false;
-        }
-    }
 
 }
