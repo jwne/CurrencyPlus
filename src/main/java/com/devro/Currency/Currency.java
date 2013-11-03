@@ -6,6 +6,8 @@ import com.devro.Currency.Commands.TakeCommand;
 import com.devro.Currency.Listeners.Join;
 import com.devro.Currency.Utils.FileUtil;
 import com.devro.Currency.Utils.MessageUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -38,6 +40,7 @@ public class Currency extends JavaPlugin {
      getCommand("take").setExecutor(new TakeCommand(this));
     }
 
+
     //**************************//
 
     public void registerListeners()  {
@@ -45,5 +48,14 @@ public class Currency extends JavaPlugin {
     }
 
     //**************************//
+
+    public boolean isInteger(String string) {
+        try {
+           Integer.parseInt(string);
+           return true;
+        }   catch (NumberFormatException nfe) {
+           return false;
+        }
+    }
 
 }

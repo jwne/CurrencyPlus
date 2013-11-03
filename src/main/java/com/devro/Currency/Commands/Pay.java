@@ -33,13 +33,23 @@ public class Pay implements CommandExecutor {
                     }
                     if (args.length == 2) {
                         String name = this.plugin.fileUtil.getPlayerName(args[0]);
-                        if (name.equals(player.getName())) {
-                            this.plugin.messageUtils.sendMessageFromModule(player, "Error", "Trying to send money to yourself?");
+                        if (!name.equals(player.getName())) {
+                            int moneyPaid= Integer.parseInt(args[1]);
+                            this.plugin.fileUtil.addMoney(name, moneyPaid);
+                            this.plugin.fileUtil.takeMoney(player.getName(), moneyPaid);
+                            this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have sent " + moneyPaid + " " +  this.plugin.getConfig().getString("Currency-Name") + " to " + name);
                         }
-                        int moneyPaid= Integer.parseInt(args[1]);
-                        this.plugin.fileUtil.addMoney(name, moneyPaid);
-                        this.plugin.fileUtil.takeMoney(player.getName(), moneyPaid);
-                        this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have sent " + moneyPaid + this.plugin.getConfig().getString("Currency-Name") + " to " + name);
+
+                        if (this.plugin.isInteger(args[1])) {
+                            int moneyPaid= Integer.parseInt(args[1]);
+                            this.plugin.fileUtil.addMoney(name, moneyPaid);
+                            this.plugin.fileUtil.takeMoney(player.getName(), moneyPaid);
+                            this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have sent " + moneyPaid  + " " + this.plugin.getConfig().getString("Currency-Name") + " to " + name);
+                        }
+                        else {
+                            this.plugin.messageUtils.sendMessageFromModule(player, "Error", "Something went wrong, are you sure you are trying to send money and not a letter or trying to send money to yourself?");
+                        }
+
                     }
                 }
             }
