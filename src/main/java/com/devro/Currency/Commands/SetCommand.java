@@ -34,6 +34,7 @@ public class SetCommand implements CommandExecutor {
             if (args.length == 0 || args.length > 2) {
                 this.plugin.messageUtils.sendMessageFromModule(player, "Error", "Not enough arguments or too many");
             }
+
             if (args.length == 2) {
                 String name = this.plugin.fileUtil.getPlayerName(args[0]);
                 int moneySet = Integer.parseInt(args[1]);
