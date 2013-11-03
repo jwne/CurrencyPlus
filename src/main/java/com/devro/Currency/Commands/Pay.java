@@ -29,14 +29,14 @@ public class Pay implements CommandExecutor {
                 Player player = (Player) sender;
                 if (player.hasPermission("currency.pay")) {
                     if (args.length == 0 || args.length > 2) {
-                        this.plugin.messageUtils.sendMessageFromModule(player, "Error: ", "To many arguments");
+                        this.plugin.messageUtils.sendMessageFromModule(player, "Error", "To many arguments");
                     }
 
                     String name = this.plugin.fileUtil.getPlayerName(args[0]);
                     int moneyPaid= Integer.parseInt(args[1]);
                     this.plugin.fileUtil.addMoney(name, moneyPaid);
                     this.plugin.fileUtil.takeMoney(player.getName(), moneyPaid);
-                    this.plugin.messageUtils.sendMessageFromModule(player, "Success:", "You have sent " + moneyPaid + " to " + name);
+                    this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have sent " + moneyPaid + " to " + name);
                 }
             }
         }
