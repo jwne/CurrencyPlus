@@ -14,7 +14,7 @@ Configuration
 ------
 
 CurrencyPlus has a really easy to follow configuration, this section is intended to allow the Owners to see how to use the configuration.
-If you don't know how to access a Configuration Simply go into your Plugins Folder -> CurrencyPlus -> config.yml
+If you don't know how to access a Configuration Simply go into your Plugins Folder > CurrencyPlus > config.yml
 
 Some of the features it has are the following, per example, if i want to name my currency Dollars, i would go to my config.yml and do the following:
 
