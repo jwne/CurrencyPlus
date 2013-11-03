@@ -29,3 +29,9 @@ Credits
 - DevRosemberg's File Util
 - macguy8's idea to use a method to simplify sending messages.
 - Bukkit for creating the Bukkit Project.
+- Apache for creating Maven.
+
+JavaDocs
+------
+
+You can find our JavaDocs in here: http://devrosemberg.com/javadocs/currencyplus/

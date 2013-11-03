@@ -1,7 +1,6 @@
 package com.devro.Currency.Listeners;
 
 import com.devro.Currency.Currency;
-import com.devro.Currency.Utils.MessageUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
