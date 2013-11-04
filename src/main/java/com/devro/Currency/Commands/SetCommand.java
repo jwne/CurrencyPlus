@@ -1,5 +1,6 @@
 package com.devro.Currency.Commands;
 
+import com.devro.Currency.API.CurrencyPlusAPI;
 import com.devro.Currency.Currency;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,7 +29,7 @@ public class SetCommand implements CommandExecutor {
             Player player = (Player) sender;
 
             if (!player.hasPermission("currency.set")) {
-             this.plugin.messageUtils.sendMessageFromModule(player,"Error", "Not enough permissions");
+             this.plugin.messageUtils.sendNoPermissionMessage(player);
             }
 
             if (args.length == 0 || args.length > 2) {
@@ -36,6 +37,9 @@ public class SetCommand implements CommandExecutor {
             }
 
             if (args.length == 2) {
+                if (!CurrencyPlusAPI.isInteger(args[1])) {
+                    this.plugin.messageUtils.sendMessageFromModule(player, "Error", "Something went wrong, are you sure you are trying to send money and not a letter or trying to send money to yourself?");
+                }
                 String name = this.plugin.fileUtil.getPlayerName(args[0]);
                 int moneySet = Integer.parseInt(args[1]);
                 this.plugin.fileUtil.setMoney(name, moneySet);

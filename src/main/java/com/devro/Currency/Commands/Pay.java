@@ -54,6 +54,7 @@ public class Pay implements CommandExecutor {
 
                     }
                 }
+                this.plugin.messageUtils.sendNoPermissionMessage(player);
             }
         }
         return true;

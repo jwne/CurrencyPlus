@@ -24,11 +24,27 @@ Some of the features it has are the following, per example, if i want to name my
 
 That would allow the plugin to read it and  when some transaction is going on it will display the currency name as Dollars
 
+Developer API
+------
+
+Currency Plus includes a nice and easy to use API which allows plugin developers to create their own plugins with this code. It includes several methods stated below:
+
+`getMoney()` will return the amount of money a player has.
+
+ `setMoney()` will set the amount of money a player will have.
+
+ `addMoney()` will add the desired amount of money to the amount the player already has.
+
+ `takeMoney()` will remove the desired amount of money to the amount the player already has.
+
+  `isInteger()` will check if a string is an Integer, if it is it will return true and if its not it will return false, is is used to avoid NumberFormatExceptions.
+
+   `getCurrencyName()` will return the value set in the config, for example 'Dollars'
+
 Credits
 ------
 - DevRosemberg's File Util
 - macguy8's idea to use a method to simplify sending messages.
-- Bukkit for creating the Bukkit Project.
 - Apache for creating Maven.
 
 JavaDocs

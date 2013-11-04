@@ -25,4 +25,8 @@ public class MessageUtils {
 
     //**************************//
 
+    public void sendNoPermissionMessage(Player player) {
+        sendMessageFromModule(player, "Error", "Not enough permissions to execute this command");
+    }
+
 }
