@@ -29,15 +29,15 @@ Developer API
 
 Currency Plus includes a nice and easy to use API which allows plugin developers to create their own plugins with this code. It includes several methods stated below:
 
-`getMoney()` will return the amount of money a player has.
+`getMoney(Player player)` will return the amount of money a player has.
 
- `setMoney()` will set the amount of money a player will have.
+ `setMoney(Player player)` will set the amount of money a player will have.
 
- `addMoney()` will add the desired amount of money to the amount the player already has.
+ `addMoney(Player player)` will add the desired amount of money to the amount the player already has.
 
- `takeMoney()` will remove the desired amount of money to the amount the player already has.
+ `takeMoney(Player player)` will remove the desired amount of money to the amount the player already has.
 
-  `isInteger()` will check if a string is an Integer, if it is it will return true and if its not it will return false, is is used to avoid NumberFormatExceptions.
+  `isInteger(String string)` will check if a string is an Integer, if it is it will return true and if its not it will return false, is is used to avoid NumberFormatExceptions.
 
    `getCurrencyName()` will return the value set in the config, for example 'Dollars'
 
