@@ -29,21 +29,24 @@ public class SetCommand implements CommandExecutor {
             Player player = (Player) sender;
 
             if (!player.hasPermission("currency.set")) {
-             this.plugin.messageUtils.sendNoPermissionMessage(player);
+                this.plugin.messageUtils.sendNoPermissionMessage(player);
+                return true;
             }
 
             if (args.length == 0 || args.length > 2) {
                 this.plugin.messageUtils.sendMessageFromModule(player, "Error", "Not enough arguments or too many");
+                return true;
             }
 
             if (args.length == 2) {
                 if (!CurrencyPlusAPI.isInteger(args[1])) {
                     this.plugin.messageUtils.sendMessageFromModule(player, "Error", "Something went wrong, are you sure you are trying to send money and not a letter or trying to send money to yourself?");
                 }
-                String name = this.plugin.fileUtil.getPlayerName(args[0]);
+                Player taken = Currency.getInstance().getServer().getPlayerExact(args[0]);
                 int moneySet = Integer.parseInt(args[1]);
-                this.plugin.fileUtil.setMoney(name, moneySet);
-                this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have set the money of " + name + " to " + moneySet + " " +  this.plugin.getConfig().getString("Currency-Name"));
+                CurrencyPlusAPI.setBalance(taken,moneySet);
+                this.plugin.messageUtils.sendMessageFromModule(player, "Success", "You have set the money of " + taken.getName() + " to " + moneySet + " " +  this.plugin.getConfig().getString("Currency-Name"));
+                return false;
             }
         }
         return true;

@@ -1,2 +1,6 @@
 ##Currency+ Configuration Section##
 Currency-Name: Dollars
+Display-Currency-On-Join: true
+DB:
+  Host: 'localhost'
+  Port: 27017

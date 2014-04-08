@@ -35,15 +35,12 @@ public class TakeCommand implements CommandExecutor {
 
                     if (args.length == 2) {
                         if (!CurrencyPlusAPI.isInteger(args[1])) {
-                            this.plugin.messageUtils.sendMessageFromModule(player, "Error", "Something went wrong, are you sure you are trying to send money and not a letter or trying to send money to yourself?");
+                            this.plugin.messageUtils.sendMessageFromModule(player, "Error", "Something went wrong, are you sure you are trying to send money and not a letter?");
                         }
-                        String name = this.plugin.fileUtil.getPlayerName(args[0]);
-                        if (name == player.getName()) {
-                            this.plugin.messageUtils.sendMessageFromModule(player, "Error", "Trying to take money from yourself? Thats kind of odd");
-                        }
+                        Player taken = Currency.getInstance().getServer().getPlayerExact(args[0]);
                         int moneyTaken = Integer.parseInt(args[1]);
-                        this.plugin.fileUtil.takeMoney(name, moneyTaken);
-                        this.plugin.messageUtils.sendMessageFromModule(player, "Success", "Successfully taken " + moneyTaken +  " "+ this.plugin.getConfig().getString("Currency-Name") + " from " + name);
+                        CurrencyPlusAPI.takeMoney(taken, moneyTaken);
+                        this.plugin.messageUtils.sendMessageFromModule(player, "Success", "Successfully taken " + moneyTaken +  " "+ this.plugin.getConfig().getString("Currency-Name") + " from " + taken.getName());
                     }
                 }
                 this.plugin.messageUtils.sendNoPermissionMessage(player);

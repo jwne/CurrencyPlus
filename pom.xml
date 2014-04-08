@@ -6,7 +6,7 @@
 
     <groupId>com.devro</groupId>
     <artifactId>Currency</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <url>DevRosemberg.com</url>
     <name>CurrencyPlus</name>
 
@@ -21,30 +21,23 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.6.4-R2.1-SNAPSHOT</version>
+            <version>1.7.2-R0.3-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>craftbukkit</artifactId>
-            <version>1.6.4-R0.1-SNAPSHOT</version>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>2.10.1</version>
         </dependency>
     </dependencies>
 
     <distributionManagement>
         <repository>
-            <id>devroftp</id>
+            <id>devrosemberg-ftp-repo</id>
             <url>ftp://maven.devrosemberg.com/</url>
         </repository>
     </distributionManagement>
 
     <build>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ftp</artifactId>
-                <version>2.2</version>
-            </extension>
-        </extensions>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -61,7 +54,35 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>org.mongodb:mongo-java-driver</include>
+                                    <include>org.ocpsoft.prettytime:prettytime</include>
+                                </includes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ftp</artifactId>
+                <version>2.2</version>
+            </extension>
+        </extensions>
     </build>
 
 </project>
