@@ -44,7 +44,6 @@ Currency Plus includes a nice and easy to use API which allows plugin developers
 Credits
 ------
 - DevRosemberg's File Util
-- macguy8's idea to use a method to simplify sending messages.
 - Apache for creating Maven.
 
 JavaDocs
