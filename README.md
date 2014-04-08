@@ -37,9 +37,9 @@ Currency Plus includes a nice and easy to use API which allows plugin developers
 
  `takeMoney(Player player)` will remove the desired amount of money to the amount the player already has.
 
-  `isInteger(String string)` will check if a string is an Integer, if it is it will return true and if its not it will return false, is is used to avoid NumberFormatExceptions.
+ `isInteger(String string)` will check if a string is an Integer, if it is it will return true and if its not it will return false, is is used to avoid NumberFormatExceptions.
 
-   `getCurrencyName()` will return the value set in the config, for example 'Dollars'
+ `getCurrencyName()` will return the value set in the config, for example 'Dollars'
 
 Credits
 ------
