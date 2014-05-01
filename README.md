@@ -45,6 +45,7 @@ Credits
 ------
 - DevRosemberg's File Util
 - Apache for creating Maven.
+- evilmidget38's UUID Fetcher.
 
 JavaDocs
 ------
