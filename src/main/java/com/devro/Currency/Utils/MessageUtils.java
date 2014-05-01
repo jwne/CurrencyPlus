@@ -1,6 +1,5 @@
-package com.devro.Currency.Utils;
+package com.devro.currency.utils;
 
-import com.devro.Currency.Currency;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -11,22 +10,12 @@ import org.bukkit.entity.Player;
  */
 public class MessageUtils {
 
-    private Currency plugin;
-
-    public MessageUtils(Currency currency) {
-        this.plugin = currency;
-    }
-
-    //**************************//
-
-    public void sendMessageFromModule(Player player, String module, String message) {
+    public static void sendMessageFromModule(Player player, String module, String message) {
         player.sendMessage(ChatColor.YELLOW.toString() + ChatColor.BOLD + module + ": " + ChatColor.GRAY + message + ".");
     }
 
-    //**************************//
-
-    public void sendNoPermissionMessage(Player player) {
-        sendMessageFromModule(player, "Error", "Not enough permissions to execute this command");
+    public static void sendNoPermissionMessage(Player player) {
+        sendMessageFromModule(player, "Error", "Not enough permissions to execute this command!");
     }
 
 }

@@ -1,4 +1,4 @@
-package com.devro.Currency.Utils;
+package com.devro.currency.utils;
 
 import com.mongodb.DB;
 import com.mongodb.DBCollection;

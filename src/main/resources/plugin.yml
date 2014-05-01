@@ -1,11 +1,4 @@
 name: CurrencyPlus
-author: DevRo_
-version: Alpha
-main: com.devro.Currency.Currency
-commands:
- pay:
-  description: Allows users to pay money to others.
- set:
-  description: Sets the amount of money to other players.
- take:
-  description: Takes the amount of money from a player.
+author: DevRosemberg
+version: 1.0
+main: com.devro.currency.Currency

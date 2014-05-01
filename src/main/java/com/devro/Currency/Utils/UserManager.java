@@ -1,7 +1,10 @@
-package com.devro.Currency.Utils;
+package com.devro.currency.utils;
 
+import com.devro.currency.Currency;
+import com.devro.currency.events.UserUnloadEvent;
 import org.bukkit.entity.Player;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 /**
@@ -11,46 +14,49 @@ import java.util.HashMap;
  */
 public class UserManager {
 
-    private static HashMap<String, User> users = new HashMap<String, User>();
+    //*************************//
 
+    private static UserManager instance;
 
-    public static void reset() {
-        users.clear();
-    }
+    private HashMap<String, User> onlineUsers = new HashMap<String, User>();
 
+    //*************************//
 
-    public static User getUser(Player player) {
-        return (getUser(player.getName()));
-    }
-
-    public static User getUser(String player) {
-        return (users.containsKey(player) ? users.get(player) : registerUser(player, new User(player)));
-    }
-
-    public static void removeUser(Player player) {
-        removeUser(player.getName());
-    }
-
-    public static void removeUser(String name) {
-        if (!users.containsKey(name)) {
-            throw new IllegalArgumentException();
+    public static UserManager getInstance() {
+        if (instance == null) {
+            instance = new UserManager();
         }
 
-        users.remove(name);
+        return (instance);
     }
 
-    public static void removeUser(User user) {
-        removeUser(user.getName());
+    //*************************//
+
+    public User getUser(Player player) {
+        return (onlineUsers.containsKey(player.getName()) ? onlineUsers.get(player.getName()) : registerUser(player.getName(), new User(player.getName())));
     }
 
-    private static User registerUser(String player, User user) {
-        if (!user.getName().equals(player)) {
-            throw new IllegalArgumentException();
-        }
+    public User getUserString(String player) {
+        return (onlineUsers.get(player));
+    }
 
-        users.put(player, user);
+    public void removeUser(Player player) {
+        User user = onlineUsers.get(player.getName());
+
+        Currency.getInstance().getServer().getPluginManager().callEvent(new UserUnloadEvent(user));
+
+        onlineUsers.remove(player.getName());
+    }
+
+    public User registerUser(String player, User user) {
+        onlineUsers.put(player, user);
         return (user);
     }
 
+    public Collection<User> getUsers() {
+        return (onlineUsers.values());
+    }
+
+    //*************************//
 
 }

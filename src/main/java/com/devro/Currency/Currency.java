@@ -1,11 +1,11 @@
-package com.devro.Currency;
+package com.devro.currency;
 
-import com.devro.Currency.Commands.PayCommand;
-import com.devro.Currency.Commands.SetCommand;
-import com.devro.Currency.Commands.TakeCommand;
-import com.devro.Currency.Listeners.JoinListener;
-import com.devro.Currency.Utils.DatabaseManager;
-import com.devro.Currency.Utils.MessageUtils;
+import com.devro.currency.commands.PayCommand;
+import com.devro.currency.commands.SetCommand;
+import com.devro.currency.commands.TakeCommand;
+import com.devro.currency.commands.core.CommandManager;
+import com.devro.currency.listeners.JoinListener;
+import com.devro.currency.utils.DatabaseManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -17,14 +17,13 @@ public class Currency extends JavaPlugin {
 
     //**************************//
 
-    public MessageUtils messageUtils;
     private static Currency instance;
 
     //**************************//
 
     public void onEnable() {
         setInstance(this);
-        this.messageUtils = new MessageUtils(this);
+        CommandManager.getInstance();
         registerCommands();
         registerListeners();
         saveDefaultConfig();
@@ -39,9 +38,11 @@ public class Currency extends JavaPlugin {
     //**************************//
 
     public void registerCommands() {
-     getCommand("pay").setExecutor(new PayCommand(this));
-     getCommand("set").setExecutor(new SetCommand(this));
-     getCommand("take").setExecutor(new TakeCommand(this));
+        CommandManager.getInstance().addCommands(
+                new PayCommand(),
+                new SetCommand(),
+                new TakeCommand()
+        );
     }
 
 

@@ -1,8 +1,7 @@
-package com.devro.Currency.API;
+package com.devro.currency.api;
 
-import com.devro.Currency.Currency;
-import com.devro.Currency.Utils.User;
-import com.devro.Currency.Utils.UserManager;
+import com.devro.currency.Currency;
+import com.devro.currency.utils.UserManager;
 import org.bukkit.entity.Player;
 
 /**
@@ -13,55 +12,77 @@ import org.bukkit.entity.Player;
 public class CurrencyPlusAPI {
 
     //**************************//
-
-    private static Currency plugin;
-
-    //**************************//
-
+    /**
+    @return Will return the amount of money the Player has
+     */
     public static int getMoney(Player player) {
-      //Returns the amount of money a Player has.
-      int money = UserManager.getUser(player).getBalance();
-      return money;
+      return UserManager.getInstance().getUser(player).getBalance();
     }
 
     //**************************//
 
+    /**
+     *
+     * @param player player to set the balance of
+     * @param amount to what amount the balance will be set
+     */
     public static void setBalance(Player player, int amount) {
-     //Used to set the amount of money a player has.
-        UserManager.getUser(player).setBalance(amount);
+        UserManager.getInstance().getUser(player).setBalance(amount);
     }
 
     //**************************//
 
+    /**
+     *
+     * @param player player whom to add the money.
+     * @param amount how much money will be added to the players account.
+     */
     public static void addMoney(Player player, int amount) {
-        //Used to add a specific amount of money to the currency the player already has.
-        UserManager.getUser(player).giveBalance(amount);
+        UserManager.getInstance().getUser(player).giveBalance(amount);
     }
 
     //**************************//
 
+    /**
+     *
+     * @param player player whom to take the money from.
+     * @param amount how much money will be taken from the players account.
+     */
     public static void takeMoney(Player player, int amount) {
-        //Used to take a specific amount of money from the currency the player already has.
-        UserManager.getUser(player).takeBalance(amount);
+        UserManager.getInstance().getUser(player).takeBalance(amount);
     }
 
     //**************************//
 
-    public static boolean isInteger(String string) {
-        //Checks if a String is an integer, used in several methods to prevent NumberFormatExceptions.
-        try {
-            Integer.parseInt(string);
-            return true;
-        }   catch (NumberFormatException nfe) {
-            return false;
-        }
+    /**
+     *
+     * @param string String to check if it is an Integer.
+     * @return will return rather an Integer or a -1 if not valid
+     */
+    public static int resolve(String string) {
+            int i = -1;
+
+            try {
+                i = Integer.parseInt(string);
+            } catch (NumberFormatException exception) {
+                exception.printStackTrace();
+            }
+
+            if (i <= 0) {
+                i = -1;
+            }
+
+            return (i);
     }
 
     //**************************//
 
+    /**
+     *
+     * @return Currency name, Eg: Dollars
+     */
     public static String getCurrencyName() {
-        //Returns Currency Name, for example 'Dollars'
-        return CurrencyPlusAPI.plugin.getConfig().getString("Currency-Name");
+        return Currency.getInstance().getConfig().getString("Currency-Name");
     }
 
     //**************************//
